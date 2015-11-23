@@ -10,7 +10,7 @@ require(['common/ajax','common/urls','common/pagination', 'template'], function(
             init : function(){
 				ajax.getJSON({
 					url: urls.r('member/list.do'),
-					data: pagination.createPageParam({'index':1, 'size':10}),
+					data: pagination.createPageParam({'index':1, 'size':10}, {'certain':{'name':'gordon','age':20}}, {'field':'id','direction':'asc'}),
 		            success: function(response) {
 		                if (response && 200 === response.status_code) {
 		                    var data = response.data;

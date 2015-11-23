@@ -13,11 +13,43 @@ define([], function() {
 			}
 
 			if(condition){
-				//TODO
+				if(condition.certain){
+					for(var pro in condition.certain){
+						if(!condition.certain.hasOwnProperty(pro)){ 
+							continue; 
+						}
+						data["condition.certain['" + pro + "']"] = condition.certain[pro];
+					}
+				}
+				if(condition.fuzzy){
+					for(var pro in condition.fuzzy){
+						if(!condition.fuzzy.hasOwnProperty(pro)){ 
+							continue; 
+						}
+						data["condition.fuzzy['" + pro + "']"] = condition.fuzzy[pro];
+					}
+				}
+				if(condition.preFuzzy){
+					for(var pro in condition.preFuzzy){
+						if(!condition.preFuzzy.hasOwnProperty(pro)){ 
+							continue; 
+						}
+						data["condition.preFuzzy['" + pro + "']"] = condition.preFuzzy[pro];
+					}
+				}
+				if(condition.postFuzzy){
+					for(var pro in condition.postFuzzy){
+						if(!condition.postFuzzy.hasOwnProperty(pro)){ 
+							continue; 
+						}
+						data["condition.postFuzzy['" + pro + "']"] = condition.postFuzzy[pro];
+					}
+				}
 			}
 
-			if(sort){
-				//TODO		
+			if(sort && sort.field && (sort.direction == 'asc' || sort.direction == 'desc')){
+				data['sort.field'] = sort.field;
+				data['sort.direction'] = sort.direction;
 			}
 
 			return data;
