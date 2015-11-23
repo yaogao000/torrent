@@ -35,6 +35,7 @@
         
       </tbody>
     </table>
+    <?php require PAGE_PATH . '/layout/footer.php' ?>
     <script type="text/html" id="member-item">
         {{each data as item}}
             <tr>
