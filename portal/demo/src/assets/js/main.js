@@ -4,7 +4,7 @@ var __env = (function() {
         'dev': {
             'mode': 'dev',
             'api': 'http://10.128.3.169:4567/api/',
-            'static': 'http://127.0.0.1:4568'
+            'static': 'http://10.128.3.169:4568'
         },
         'staging': {
             'mode': 'staging',

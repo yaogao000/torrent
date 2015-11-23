@@ -1,14 +1,40 @@
-require(['common/ajax','common/urls','common/pagination'], function(ajax, urls, pagination) {
+require(['common/ajax','common/urls','common/pagination', 'template'], function(ajax, urls, pagination, template) {
 	$(function() {
-		// pagination, template
-		ajax.getJSON({
-			url: urls.r('member/list.do'),
-			data: pagination.createPageParam({'index':1, 'size':10}),
-            success: function(response) {
-                if (response && 200 === response.status_code) {
-                    console.log(response.data)
-                }
+		var page = {
+            init : function(){
+                member.init();
             }
-		});
+        };
+
+        var member = {
+            init : function(){
+				ajax.getJSON({
+					url: urls.r('member/list.do'),
+					data: pagination.createPageParam({'index':1, 'size':10}),
+		            success: function(response) {
+		                if (response && 200 === response.status_code) {
+		                    var data = response.data;
+
+		                     if(!data || data.length <= 0){
+			                    
+			                }else{
+			                    member.$holder.memberList.html(template('member-item', {data: data}));
+			                }
+		                }
+		            }
+				});
+                member.bindEvent();
+            },
+            bindEvent : function(){
+                
+            },
+            $holder:{
+            	memberList : $("#member_list")
+            }
+        }
+
+
+        // init
+        page.init();
 	});
 });
