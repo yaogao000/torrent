@@ -16,7 +16,7 @@ define(['template'], function(template) {
      * @author yanis.wang
      * @see http://yaniswang.com/frontend/2013/02/16/dateformat-performance/
      */
-    template.helper('dateFormat', function (date, format) {
+    template.helper('dateFormat', function(date, format) {
         date = new Date(date);
         var map = {
             "M": date.getMonth() + 1, //月份 
@@ -27,12 +27,12 @@ define(['template'], function(template) {
             "q": Math.floor((date.getMonth() + 3) / 3), //季度 
             "S": date.getMilliseconds() //毫秒 
         };
-        format = format.replace(/([yMdhmsqS])+/g, function(all, t){
+        format = format.replace(/([yMdhmsqS])+/g, function(all, t) {
             var v = map[t];
             if (v !== undefined) {
                 if (all.length > 1) {
                     v = '0' + v;
-                    v = v.substr(v.length-2);
+                    v = v.substr(v.length - 2);
                 }
                 return v;
             } else if (t === 'y') {

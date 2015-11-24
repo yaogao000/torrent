@@ -34,8 +34,8 @@ define([], function() {
         getJSON: function(settings) {
             var data = settings['data'];
             var async = settings['async'];
-            if(typeof async == 'undefined'){
-            	async = true;
+            if (typeof async == 'undefined') {
+                async = true;
             }
             $.ajax({
                 url: settings['url'],

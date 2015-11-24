@@ -38,7 +38,7 @@ require.config({
     baseUrl: __env['static'] + '/js',
     paths: {
         'jquery': 'lib/jquery.min',
-        'bootstrap':'lib/bootstrap.min',
+        'bootstrap': 'lib/bootstrap.min',
         'template': 'lib/template',
     },
     shim: {
@@ -55,15 +55,15 @@ require.config({
     }
 });
 
-require(['jquery','bootstrap'], function($, bs) {
+require(['jquery', 'bootstrap'], function($, bs) {
     // 设置全局 错误处理 函数
-    $.ajaxSettings.error = function(xhr, message, error){
-            // 判断用户请求是否未登录
-            if("403" == xhr.status && '{"code":403,"message":"未登录"}' == xhr.responseText){
-                alert('未登录');
-            }else{
-                alert(xhr.responseText);
-            }
+    $.ajaxSettings.error = function(xhr, message, error) {
+        // 判断用户请求是否未登录
+        if ("403" == xhr.status && '{"code":403,"message":"未登录"}' == xhr.responseText) {
+            alert('未登录');
+        } else {
+            alert(xhr.responseText);
+        }
     };
 
     var scripts = $('script').eq(0).data('start');

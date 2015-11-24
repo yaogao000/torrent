@@ -3,8 +3,7 @@ define(['module'], function(module) {
     var mode = config.mode;
     var ctx = config.ctx;
     var mapping = {
-        'defaults': {
-        },
+        'defaults': {},
     };
     var current = mapping[mode] || mapping['defaults'];
     return {
@@ -12,15 +11,17 @@ define(['module'], function(module) {
             var url = current[name] ? ctx + current[name] : ctx + name;
             if (!params) return url;
             for (var i = 0; i < params.length; i++) {
-                var origin ='{' + i + '}';
+                var origin = '{' + i + '}';
                 url = url.replace(origin, params[i]);
             }
             return url;
         },
         v: function(name) {
-        	var url = window.location.href;
-    		var reg = new RegExp("(^|&|\\?)"+ name +"=([^&]*)(&|$)"), r;
-    		if (r = url.match(reg)) return unescape(r[2]); return null;
+            var url = window.location.href;
+            var reg = new RegExp("(^|&|\\?)" + name + "=([^&]*)(&|$)"),
+                r;
+            if (r = url.match(reg)) return unescape(r[2]);
+            return null;
         }
     };
 });
